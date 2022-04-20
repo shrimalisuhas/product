@@ -69,6 +69,7 @@ class ProductServiceTest {
         Product mockProduct = new Product(1, "Product Name", 10);
         doReturn(mockProduct).when(repository).save(any());
 
+      
         Product returnedProduct = service.save(mockProduct);
 
         Assertions.assertNotNull(returnedProduct, "The saved product should not be null");
