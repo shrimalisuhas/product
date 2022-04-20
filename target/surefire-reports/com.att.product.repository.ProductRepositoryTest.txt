@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.att.product.repository.ProductRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.043 sec <<< FAILURE! - in com.att.product.repository.ProductRepositoryTest
+testFindAll  Time elapsed: 0.011 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: We should not have any products in our database ==> expected: <2> but was: <1>
+	at com.att.product.repository.ProductRepositoryTest.testFindAll(ProductRepositoryTest.java:38)
+

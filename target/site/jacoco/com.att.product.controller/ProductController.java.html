@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">product</a> &gt; <a href="index.source.html" class="el_package">com.att.product.controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package com.att.product.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import com.att.product.model.Product;
+import com.att.product.service.ProductService;
+
+import java.util.Optional;
+
+@RestController
+public class ProductController {
+
+
+	private final ProductService productService;
+
+<span class="fc" id="L17">	public ProductController(ProductService productService) {</span>
+<span class="fc" id="L18">		this.productService = productService;</span>
+<span class="fc" id="L19">	}</span>
+
+	@GetMapping(&quot;/product/{id}&quot;)
+	public ResponseEntity&lt;Product&gt; getProduct(@PathVariable Integer id) {
+
+<span class="fc" id="L24">		Optional&lt;Product&gt; prod = productService.findById(id);</span>
+		Product product;
+<span class="fc bfc" id="L26" title="All 2 branches covered.">		if (prod.isPresent()) {</span>
+<span class="fc" id="L27">			product = prod.get();</span>
+		} else {
+<span class="fc" id="L29">			return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</span>
+		}
+<span class="fc" id="L31">		return new ResponseEntity&lt;&gt;(product, HttpStatus.OK);</span>
+
+	}
+
+	@GetMapping(&quot;/products&quot;)
+	public Iterable&lt;Product&gt; getProducts() {
+<span class="fc" id="L37">		return productService.findAll();</span>
+	}
+
+	@PostMapping(&quot;/product&quot;)
+	public ResponseEntity&lt;Product&gt; createProduct(@RequestBody Product product) {
+<span class="fc" id="L42">		Product newProduct = productService.save(product);</span>
+<span class="fc" id="L43">		return new ResponseEntity&lt;&gt;((newProduct), HttpStatus.OK);</span>
+	}
+
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

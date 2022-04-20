@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">product</a> &gt; <a href="index.source.html" class="el_package">com.att.product.service</a> &gt; <span class="el_source">ProductServiceImpl.java</span></div><h1>ProductServiceImpl.java</h1><pre class="source lang-java linenums">package com.att.product.service;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import com.att.product.model.Product;
+import com.att.product.repository.ProductRepository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+<span class="fc" id="L16">    private static final Logger logger = LogManager.getLogger(ProductServiceImpl.class);</span>
+
+    private final ProductRepository productRepository;
+
+<span class="fc" id="L20">    public ProductServiceImpl(ProductRepository productRepository) {</span>
+<span class="fc" id="L21">        this.productRepository = productRepository;</span>
+<span class="fc" id="L22">    }</span>
+
+    @Override
+    public Optional&lt;Product&gt; findById(Integer id) {
+<span class="fc" id="L26">        logger.info(&quot;Find product with id: {}&quot;, id);</span>
+<span class="fc" id="L27">        return productRepository.findById(id);</span>
+    }
+
+    @Override
+    public List&lt;Product&gt; findAll() {
+<span class="fc" id="L32">        logger.info(&quot;Find all products&quot;);</span>
+<span class="fc" id="L33">        return productRepository.findAll();</span>
+    }
+
+  
+
+    @Override
+    public Product save(Product product) {
+<span class="fc" id="L40">        product.setVersion(1);</span>
+
+<span class="fc" id="L42">        logger.info(&quot;Save product to the database: {}&quot;, product);</span>
+<span class="fc" id="L43">        return productRepository.save(product);</span>
+    }
+
+  
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,7 @@
+com\att\product\repository\ProductRepository.class
+com\att\product\ProductApplication.class
+com\att\product\service\ProductService.class
+com\att\product\service\ProductServiceImpl.class
+com\att\product\controller\ProductController.class
+com\att\product\model\Product.class
+com\att\product\repository\ProductRepositoryImpl.class

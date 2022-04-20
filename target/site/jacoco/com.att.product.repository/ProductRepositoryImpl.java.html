@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductRepositoryImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">product</a> &gt; <a href="index.source.html" class="el_package">com.att.product.repository</a> &gt; <span class="el_source">ProductRepositoryImpl.java</span></div><h1>ProductRepositoryImpl.java</h1><pre class="source lang-java linenums">package com.att.product.repository;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+
+import com.att.product.model.Product;
+
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+@Repository
+public class ProductRepositoryImpl implements ProductRepository {
+
+<span class="fc" id="L21">	String version = &quot;version&quot;;</span>
+<span class="fc" id="L22">	String quantity = &quot;quantity&quot;;</span>
+<span class="fc" id="L23">    private static final Logger logger = LogManager.getLogger(ProductRepositoryImpl.class);</span>
+
+    private final JdbcTemplate jdbcTemplate;
+    private final SimpleJdbcInsert simpleJdbcInsert;
+
+<span class="fc" id="L28">    public ProductRepositoryImpl(JdbcTemplate jdbcTemplate, DataSource dataSource) {</span>
+<span class="fc" id="L29">        this.jdbcTemplate = jdbcTemplate;</span>
+<span class="fc" id="L30">        this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource)</span>
+<span class="fc" id="L31">                .withTableName(&quot;products&quot;)</span>
+<span class="fc" id="L32">                .usingGeneratedKeyColumns(&quot;id&quot;);</span>
+<span class="fc" id="L33">    }</span>
+
+    @Override
+    public Optional&lt;Product&gt; findById(Integer id) {
+        try {
+<span class="fc" id="L38">            Product product = jdbcTemplate.queryForObject(&quot;SELECT * FROM products WHERE id = ?&quot;,</span>
+                    new Object[]{id},
+                    (rs, rowNum) -&gt; {
+<span class="fc" id="L41">                        Product p = new Product();</span>
+<span class="fc" id="L42">                        p.setId(rs.getInt(&quot;id&quot;));</span>
+<span class="fc" id="L43">                        p.setName(rs.getString(&quot;name&quot;));</span>
+<span class="fc" id="L44">                        p.setQuantity(rs.getInt(quantity));</span>
+<span class="fc" id="L45">                        p.setVersion(rs.getInt(version));</span>
+<span class="fc" id="L46">                        return p;</span>
+                    });
+<span class="fc" id="L48">            return Optional.of(product);</span>
+<span class="nc" id="L49">        } catch (EmptyResultDataAccessException e) {</span>
+<span class="nc" id="L50">            return Optional.empty();</span>
+        }
+    }
+
+    @Override
+    public List&lt;Product&gt; findAll() {
+<span class="fc" id="L56">        return jdbcTemplate.query(&quot;SELECT * FROM products&quot;,</span>
+                (rs, rowNumber) -&gt; {
+<span class="fc" id="L58">                    Product product = new Product();</span>
+<span class="fc" id="L59">                    product.setId(rs.getInt(&quot;id&quot;));</span>
+<span class="fc" id="L60">                    product.setName(rs.getString(&quot;name&quot;));</span>
+<span class="fc" id="L61">                    product.setQuantity(rs.getInt(quantity));</span>
+<span class="fc" id="L62">                    product.setVersion(rs.getInt(version));</span>
+<span class="fc" id="L63">                    return product;</span>
+                });
+    }
+
+  
+
+    @Override
+    public Product save(Product product) {
+        
+<span class="fc" id="L72">    	Map&lt;String, Object&gt; parameters = new HashMap&lt;&gt;(1);</span>
+<span class="fc" id="L73">        parameters.put(&quot;name&quot;, product.getName());</span>
+<span class="fc" id="L74">        parameters.put(&quot;quantity&quot;, product.getQuantity());</span>
+<span class="fc" id="L75">        parameters.put(&quot;version&quot;, product.getVersion());</span>
+
+<span class="fc" id="L77">        Number newId = simpleJdbcInsert.executeAndReturnKey(parameters);</span>
+
+<span class="fc" id="L79">        logger.info(&quot;Inserting product into database, generated key is: {}&quot;, newId);</span>
+
+<span class="fc" id="L81">        product.setId(newId.intValue());</span>
+
+<span class="fc" id="L83">        return product;</span>
+    }
+
+  
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
