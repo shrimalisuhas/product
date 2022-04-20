@@ -1,8 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.att.product.repository.ProductRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.043 sec <<< FAILURE! - in com.att.product.repository.ProductRepositoryTest
-testFindAll  Time elapsed: 0.011 sec  <<< FAILURE!
-org.opentest4j.AssertionFailedError: We should not have any products in our database ==> expected: <2> but was: <1>
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.055 sec <<< FAILURE! - in com.att.product.repository.ProductRepositoryTest
+testFindByIdSuccess  Time elapsed: 0.165 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Product ID should be 1 ==> expected: <1> but was: <3>
+	at com.att.product.repository.ProductRepositoryTest.testFindByIdSuccess(ProductRepositoryTest.java:29)
+
+testFindAll  Time elapsed: 0.012 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: We should not have any products in our database ==> expected: <2> but was: <3>
 	at com.att.product.repository.ProductRepositoryTest.testFindAll(ProductRepositoryTest.java:38)
 
