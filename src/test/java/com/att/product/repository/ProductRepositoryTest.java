@@ -86,6 +86,15 @@ class ProductRepositoryTest {
         Assertions.assertFalse(product.isPresent(), "Product with ID 1 should have been deleted");
     }
 
-    
+    @Test
+    void testDeleteFailure() {
+    	
+    	Product product =repository.save(new Product(null,"Prodeuict",100,1));
+        product.setId(null);
+        boolean result  = repository.delete(product.getId());
+        Assertions.assertFalse(result, "Delete should return false on failure");
+
+		
+    }
 
 }
