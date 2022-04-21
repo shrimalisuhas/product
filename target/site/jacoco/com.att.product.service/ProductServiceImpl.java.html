@@ -43,6 +43,12 @@ public class ProductServiceImpl implements ProductService {
 <span class="fc" id="L43">        return productRepository.save(product);</span>
     }
 
+    @Override
+    public boolean update(Product product) {
+<span class="nc" id="L48">        logger.info(&quot;Update product: {}&quot;, product);</span>
+<span class="nc" id="L49">        return productRepository.update(product);</span>
+    }
+
   
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -42,6 +42,27 @@ public class ProductController {
 		Product newProduct = productService.save(product);
 		return new ResponseEntity<>((newProduct), HttpStatus.OK);
 	}
+	
+	@PutMapping("/product/{id}")
+	public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Integer id,
+			@RequestHeader("If-Match") Integer ifMatch) {
+		Optional<Product> existingProduct = productService.findById(id);
+
+		return (ResponseEntity<Product>) existingProduct.map(p -> {
+			if (!p.getVersion().equals(ifMatch)) {
+				return ResponseEntity.status(HttpStatus.CONFLICT).build();
+			}
+
+			p.setName(product.getName());
+			p.setQuantity(product.getQuantity());
+			p.setVersion(p.getVersion() + 1);
+
+			productService.update(p);
+			return new ResponseEntity<>((p), HttpStatus.OK);
+
+		}).orElse(ResponseEntity.notFound().build());
+	}
+
 
 
 	

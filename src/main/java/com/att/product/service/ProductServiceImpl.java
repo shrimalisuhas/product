@@ -43,5 +43,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(product);
     }
 
+    @Override
+    public boolean update(Product product) {
+        logger.info("Update product: {}", product);
+        return productRepository.update(product);
+    }
+
   
 }

@@ -76,4 +76,6 @@ class ProductServiceTest {
         Assertions.assertEquals(1, returnedProduct.getVersion().intValue(),
                 "The version for a new product should be 1");
     }
+    
+    
 }

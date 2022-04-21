@@ -42,6 +42,27 @@ public class ProductController {
 <span class="fc" id="L42">		Product newProduct = productService.save(product);</span>
 <span class="fc" id="L43">		return new ResponseEntity&lt;&gt;((newProduct), HttpStatus.OK);</span>
 	}
+	
+	@PutMapping(&quot;/product/{id}&quot;)
+	public ResponseEntity&lt;Product&gt; updateProduct(@RequestBody Product product, @PathVariable Integer id,
+			@RequestHeader(&quot;If-Match&quot;) Integer ifMatch) {
+<span class="fc" id="L49">		Optional&lt;Product&gt; existingProduct = productService.findById(id);</span>
+
+<span class="fc" id="L51">		return (ResponseEntity&lt;Product&gt;) existingProduct.map(p -&gt; {</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">			if (!p.getVersion().equals(ifMatch)) {</span>
+<span class="nc" id="L53">				return ResponseEntity.status(HttpStatus.CONFLICT).build();</span>
+			}
+
+<span class="fc" id="L56">			p.setName(product.getName());</span>
+<span class="fc" id="L57">			p.setQuantity(product.getQuantity());</span>
+<span class="fc" id="L58">			p.setVersion(p.getVersion() + 1);</span>
+
+<span class="fc" id="L60">			productService.update(p);</span>
+<span class="fc" id="L61">			return new ResponseEntity&lt;&gt;((p), HttpStatus.OK);</span>
+
+<span class="fc" id="L63">		}).orElse(ResponseEntity.notFound().build());</span>
+	}
+
 
 
 	

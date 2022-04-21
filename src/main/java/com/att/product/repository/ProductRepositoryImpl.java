@@ -82,6 +82,16 @@ public class ProductRepositoryImpl implements ProductRepository {
 
         return product;
     }
+    
+    @Override
+    public boolean update(Product product) {
+        return jdbcTemplate.update("UPDATE products SET name = ?, quantity = ?, version = ? WHERE id = ?",
+                product.getName(),
+                product.getQuantity(),
+                product.getVersion(),
+                product.getId()) == 1;
+    }
+
 
   
 }

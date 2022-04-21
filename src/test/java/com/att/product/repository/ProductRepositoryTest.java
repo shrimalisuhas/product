@@ -38,8 +38,6 @@ class ProductRepositoryTest {
         Assertions.assertEquals(2, products.size(), "We should not have any products in our database");
     }
 
-
-
     @Test
     void testSave() {
         Product product = new Product("Product 5", 5);
@@ -55,7 +53,20 @@ class ProductRepositoryTest {
         Assertions.assertEquals(1, loadedProduct.get().getVersion().intValue(), "Product version is incorrect");
     }
  
-    
+    @Test
+    void testUpdateSuccess() {
+        Product product =repository.save(new Product(null,"Prodeuict",100,1));
+        product.setName("Updated Product");
+        boolean result  = repository.update(product);
+
+        Assertions.assertTrue(result, "The product should have been updated");
+
+        Optional<Product> loadedProduct = repository.findById(1);
+        Assertions.assertTrue(loadedProduct.isPresent(), "Updated product should exist in the database");
+        Assertions.assertEquals("Prodeuict", loadedProduct.get().getName(), "The product name does not match");
+        Assertions.assertEquals(100, loadedProduct.get().getQuantity().intValue(), "The quantity should now be 100");
+        Assertions.assertEquals(1, loadedProduct.get().getVersion().intValue(), "The version should now be 1");
+    }
     
     
 
