@@ -8,7 +8,7 @@ public interface ProductRepository {
   
     Optional<Product> findById(Integer id);
     List<Product> findAll();
-    Product save(Product product);
     boolean update(Product product);
-
+    Product save(Product product);
+    boolean delete(Integer id);
 }

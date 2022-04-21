@@ -33,7 +33,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
-  
+    @Override
+    public boolean update(Product product) {
+        logger.info("Update product: {}", product);
+        return productRepository.update(product);
+    }
 
     @Override
     public Product save(Product product) {
@@ -44,10 +48,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean update(Product product) {
-        logger.info("Update product: {}", product);
-        return productRepository.update(product);
+    public boolean delete(Integer id) {
+        logger.info("Delete product with id: {}", id);
+        return productRepository.delete(id);
     }
-
-  
 }

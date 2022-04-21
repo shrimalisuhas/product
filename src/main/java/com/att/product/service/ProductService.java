@@ -5,8 +5,7 @@ import java.util.Optional;
 
 import com.att.product.model.Product;
 
-public interface ProductService {    
-	Optional<Product> findById(Integer id);
+public interface ProductService {    Optional<Product> findById(Integer id);
 
      List<Product> findAll();   
        
@@ -14,7 +13,5 @@ public interface ProductService {
     
     boolean update(Product product);
 
-
-    
-  
+    boolean delete(Integer id);
 }

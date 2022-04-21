@@ -78,6 +78,13 @@ class ProductRepositoryTest {
 
     }
 
+    @Test
+    void testDeleteSuccess() {
+        boolean result = repository.delete(1);
+        Assertions.assertTrue(result, "Delete should return true on success");
+        Optional<Product> product = repository.findById(1);
+        Assertions.assertFalse(product.isPresent(), "Product with ID 1 should have been deleted");
+    }
 
     
 

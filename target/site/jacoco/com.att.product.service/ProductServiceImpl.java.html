@@ -33,22 +33,24 @@ public class ProductServiceImpl implements ProductService {
 <span class="fc" id="L33">        return productRepository.findAll();</span>
     }
 
-  
+    @Override
+    public boolean update(Product product) {
+<span class="nc" id="L38">        logger.info(&quot;Update product: {}&quot;, product);</span>
+<span class="nc" id="L39">        return productRepository.update(product);</span>
+    }
 
     @Override
     public Product save(Product product) {
-<span class="fc" id="L40">        product.setVersion(1);</span>
+<span class="fc" id="L44">        product.setVersion(1);</span>
 
-<span class="fc" id="L42">        logger.info(&quot;Save product to the database: {}&quot;, product);</span>
-<span class="fc" id="L43">        return productRepository.save(product);</span>
+<span class="fc" id="L46">        logger.info(&quot;Save product to the database: {}&quot;, product);</span>
+<span class="fc" id="L47">        return productRepository.save(product);</span>
     }
 
     @Override
-    public boolean update(Product product) {
-<span class="nc" id="L48">        logger.info(&quot;Update product: {}&quot;, product);</span>
-<span class="nc" id="L49">        return productRepository.update(product);</span>
+    public boolean delete(Integer id) {
+<span class="nc" id="L52">        logger.info(&quot;Delete product with id: {}&quot;, id);</span>
+<span class="nc" id="L53">        return productRepository.delete(id);</span>
     }
-
-  
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

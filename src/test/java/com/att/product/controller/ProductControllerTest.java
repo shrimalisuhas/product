@@ -5,6 +5,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -149,6 +150,15 @@ class ProductControllerTest {
 		mockMvc.perform(put("/product/{id}", 1).contentType(MediaType.APPLICATION_JSON).header(HttpHeaders.IF_MATCH, 1)
 				.content(asJsonString(putProduct)))
 				.andExpect(status().isNotFound());
+	}
+
+	@Test
+	@DisplayName("DELETE /product/1 - Success")
+	void testProductDeleteSuccess() throws Exception {
+		Product mockProduct = new Product(1, "Product Name", 10, 1);
+		doReturn(Optional.of(mockProduct)).when(service).findById(1);
+		doReturn(true).when(service).delete(1);
+		mockMvc.perform(delete("/product/{id}", 1)).andExpect(status().isOk());
 	}
 
 
