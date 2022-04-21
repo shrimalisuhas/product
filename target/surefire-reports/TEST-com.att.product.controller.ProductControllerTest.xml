@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.att.product.controller.ProductControllerTest" time="6.805" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.att.product.controller.ProductControllerTest" time="6.637" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.12+8-LTS-237"/>
@@ -25,7 +25,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Users\adm\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6263531128936687428.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\adm\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf10583264756294595509.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk-11.0.12\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\adm\AppData\Local\Microsoft\WindowsApps;;."/>
     <property name="jdk.debug" value="release"/>
@@ -60,14 +60,14 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testGetProductByIdNotFound" classname="com.att.product.controller.ProductControllerTest" time="0.226"/>
-  <testcase name="testCreateProduct" classname="com.att.product.controller.ProductControllerTest" time="0.19"/>
-  <testcase name="testGetProductByIdFound" classname="com.att.product.controller.ProductControllerTest" time="0.005"/>
+  <testcase name="testGetProductByIdNotFound" classname="com.att.product.controller.ProductControllerTest" time="0.234"/>
+  <testcase name="testCreateProduct" classname="com.att.product.controller.ProductControllerTest" time="0.18"/>
+  <testcase name="testGetProductByIdFound" classname="com.att.product.controller.ProductControllerTest" time="0.007"/>
   <testcase name="testProductPutSuccess" classname="com.att.product.controller.ProductControllerTest" time="0.012"/>
-  <testcase name="testProductPutVersionMismatch" classname="com.att.product.controller.ProductControllerTest" time="0.008"/>
-  <testcase name="testProductPutNotFound" classname="com.att.product.controller.ProductControllerTest" time="0.009"/>
-  <testcase name="testProductDeleteNotFound" classname="com.att.product.controller.ProductControllerTest" time="0.014"/>
-  <testcase name="testProductDeleteSuccess" classname="com.att.product.controller.ProductControllerTest" time="0.007"/>
-  <testcase name="testGetAllProducts" classname="com.att.product.controller.ProductControllerTest" time="0.017"/>
-  <testcase name="testProductDeleteFailure" classname="com.att.product.controller.ProductControllerTest" time="0.006"/>
+  <testcase name="testProductPutVersionMismatch" classname="com.att.product.controller.ProductControllerTest" time="0.006"/>
+  <testcase name="testProductPutNotFound" classname="com.att.product.controller.ProductControllerTest" time="0.008"/>
+  <testcase name="testProductDeleteNotFound" classname="com.att.product.controller.ProductControllerTest" time="0.009"/>
+  <testcase name="testProductDeleteSuccess" classname="com.att.product.controller.ProductControllerTest" time="0.005"/>
+  <testcase name="testGetAllProducts" classname="com.att.product.controller.ProductControllerTest" time="0.015"/>
+  <testcase name="testProductDeleteFailure" classname="com.att.product.controller.ProductControllerTest" time="0.005"/>
 </testsuite>

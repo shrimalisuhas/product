@@ -1,4 +1,5 @@
 com\att\product\repository\ProductRepositoryTest.class
+com\att\product\repository\ProductRepositoryTestConfiguration.class
 com\att\product\controller\ProductControllerTest.class
 com\att\product\service\ProductServiceTest.class
 com\att\product\ProductApplicationTests.class
