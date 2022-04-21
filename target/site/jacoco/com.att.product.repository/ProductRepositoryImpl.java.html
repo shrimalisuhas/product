@@ -85,7 +85,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     
     @Override
     public boolean update(Product product) {
-<span class="pc bpc" id="L88" title="1 of 2 branches missed.">        return jdbcTemplate.update(&quot;UPDATE products SET name = ?, quantity = ?, version = ? WHERE id = ?&quot;,</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        return jdbcTemplate.update(&quot;UPDATE products SET name = ?, quantity = ?, version = ? WHERE id = ?&quot;,</span>
 <span class="fc" id="L89">                product.getName(),</span>
 <span class="fc" id="L90">                product.getQuantity(),</span>
 <span class="fc" id="L91">                product.getVersion(),</span>

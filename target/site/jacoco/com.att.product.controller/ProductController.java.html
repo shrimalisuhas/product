@@ -49,8 +49,8 @@ public class ProductController {
 <span class="fc" id="L49">		Optional&lt;Product&gt; existingProduct = productService.findById(id);</span>
 
 <span class="fc" id="L51">		return (ResponseEntity&lt;Product&gt;) existingProduct.map(p -&gt; {</span>
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">			if (!p.getVersion().equals(ifMatch)) {</span>
-<span class="nc" id="L53">				return ResponseEntity.status(HttpStatus.CONFLICT).build();</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">			if (!p.getVersion().equals(ifMatch)) {</span>
+<span class="fc" id="L53">				return ResponseEntity.status(HttpStatus.CONFLICT).build();</span>
 			}
 
 <span class="fc" id="L56">			p.setName(product.getName());</span>

@@ -68,7 +68,15 @@ class ProductRepositoryTest {
         Assertions.assertEquals(1, loadedProduct.get().getVersion().intValue(), "The version should now be 1");
     }
     
-    
+    @Test
+    void testUpdateFailure() {
+        Product product =repository.save(new Product(null,"Prodeuict",100,1));
+        product.setId(null);
+        boolean result  = repository.update(product);
+
+        Assertions.assertFalse(result, "The result should be false");
+
+    }
 
 
     
