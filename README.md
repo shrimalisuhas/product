@@ -4,3 +4,5 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=shrimalisuhas_product&metric=bugs)](https://sonarcloud.io/summary/new_code?id=shrimalisuhas_product)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=shrimalisuhas_product&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=shrimalisuhas_product)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=shrimalisuhas_product&metric=coverage)](https://sonarcloud.io/summary/new_code?id=shrimalisuhas_product)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=shrimalisuhas_product&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=shrimalisuhas_product)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=shrimalisuhas_product&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=shrimalisuhas_product)
