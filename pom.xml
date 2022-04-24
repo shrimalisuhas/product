@@ -66,7 +66,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.25</version><!--$NO-MVN-MAN-VER$-->
+			<version>8.0.25</version>
 		</dependency>
 
 		<!-- Test Dependencies -->
@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>2.22.0</version><!--$NO-MVN-MAN-VER$-->
+			<version>2.22.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -182,6 +182,31 @@
 				</dependencies>
 			</plugin>
 			
+			<plugin>
+		<!--  Plugin for performing Integration Tests  -->
+		<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-failsafe-plugin</artifactId>
+	<executions>
+		<execution>
+		<configuration>
+		<skipTests>${skip.integration-tests}</skipTests>
+		<includes>
+		<include>**/*ApplicationTests.java</include>
+		<include>**/*IT.java</include>
+		</includes>
+			<systemPropertyVariables>
+			<spring.datasource.url>jdbc:mysql://localhost:${mysql.port}/product</spring.datasource.url>
+			<spring.datasource.username>${mysql.root}</spring.datasource.username>
+			<spring.datasource.password>${mysql.Indian@123}</spring.datasource.password>
+			</systemPropertyVariables>
+			</configuration>
+			<goals>
+			<goal>integration-test</goal>
+			<goal>verify</goal>
+			</goals>
+			</execution>
+			</executions>
+</plugin>
 			
 			<!-- Plugin for executing SonarQube analysis -->
 			<plugin>
@@ -192,7 +217,7 @@
         
 	 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version><!--$NO-MVN-MAN-VER$-->
+				<version>2.19.1</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>

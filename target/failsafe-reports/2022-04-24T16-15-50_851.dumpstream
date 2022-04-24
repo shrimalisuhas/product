@@ -1,0 +1,15 @@
+# Created on 2022-04-24T16:15:50.852
+WARNING: An illegal reflective access operation has occurred
+
+# Created on 2022-04-24T16:15:50.852
+WARNING: Illegal reflective access by org.codehaus.groovy.vmplugin.v7.Java7$1 (file:/C:/Users/adm/.m2/repository/org/codehaus/groovy/groovy/2.4.15/groovy-2.4.15.jar) to constructor java.lang.invoke.MethodHandles$Lookup(java.lang.Class,int)
+
+# Created on 2022-04-24T16:15:50.852
+WARNING: Please consider reporting this to the maintainers of org.codehaus.groovy.vmplugin.v7.Java7$1
+
+# Created on 2022-04-24T16:15:50.853
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created on 2022-04-24T16:15:50.853
+WARNING: All illegal access operations will be denied in a future release
+
