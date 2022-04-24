@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.att.product.repository.ProductRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.582 sec - in com.att.product.repository.ProductRepositoryTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.805 sec - in com.att.product.repository.ProductRepositoryTest

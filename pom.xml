@@ -66,7 +66,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.25</version>
+			<version>8.0.25</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 
 		<!-- Test Dependencies -->
@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>2.22.0</version>
+			<version>2.22.0</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -148,7 +148,7 @@
 				<configuration>
 					<excludes>
 						<exclude>**/model/*.*</exclude>
-						<exclude>**/ProductserviceApplication.*</exclude>
+						<exclude>**/ProductApplication.*</exclude>
 					</excludes>
 				</configuration>
 				<executions>
@@ -208,6 +208,51 @@
 			</executions>
 </plugin>
 			
+			<plugin>
+	<groupId>io.fabric8</groupId>
+    	<artifactId>docker-maven-plugin</artifactId>
+	   <version>0.37.0</version>
+	   <extensions>true</extensions>
+	<configuration>
+	<images>
+	<image>
+     	<alias>database</alias>
+	   <name>mysql:5.7</name>
+	   <run>
+	  <wait>
+	  <log>MySQL init process done. Ready for start up.</log>
+	  <time>100000</time>
+	  </wait>
+	  <env>
+	<MYSQL_ROOT_PASSWORD>Indian@123</MYSQL_ROOT_PASSWORD>
+	<MYSQL_DATABASE>product</MYSQL_DATABASE>
+	<MYSQL_USER>${mysql.root}</MYSQL_USER>
+	<MYSQL_PASSWORD>${mysql.Indian@123}</MYSQL_PASSWORD>
+	</env>
+	   <ports>
+	   <port>${mysql.port}:3306</port>
+	   </ports>
+	   </run>
+			</image>
+			</images>
+			</configuration>
+			<executions>
+			<execution>
+			<id>docker:start</id>
+			<phase>pre-integration-test</phase>
+			<goals>
+			<goal>start</goal>
+			</goals>
+			</execution>
+			<execution>
+			<id>docker:stop</id>
+			<phase>post-integration-test</phase>
+			<goals>
+			<goal>stop</goal>
+			</goals>
+	</execution>
+	</executions>
+	</plugin>
 			<!-- Plugin for executing SonarQube analysis -->
 			<plugin>
           <groupId>org.sonarsource.scanner.maven</groupId>
@@ -217,7 +262,7 @@
         
 	 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
+				<version>2.19.1</version><!--$NO-MVN-MAN-VER$-->
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
